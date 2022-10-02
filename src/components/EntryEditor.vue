@@ -3,7 +3,7 @@ import EmojiField from "@/components/EmojiField.vue"
 import ArrowCircleRight from "@/assets/icons/arrow-circle-right.svg"
 import type Emoji from '@/types/Emoji'
 import type Entry from "@/types/Entry";
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 // Data
 const body = ref('')
@@ -17,6 +17,12 @@ const emoji = ref<Emoji | null>(null)
 const charCount = computed(() => body.value.length)
 // You can explicitly type charCount like so:
 // const charCount = computed<number>(() => body.value.length)
+
+// Template refs
+
+// The " | null" here is necessary since the textarea wont exist until the compoenent is mounted to the DOM
+const textarea = ref<HTMLTextAreaElement | null>(null)
+onMounted(() =>  textarea.value?.focus() )
 
 
 // Events
@@ -57,6 +63,7 @@ const handleSubmit = () => {
 <template>
   <form class="entry-form" @submit.prevent="handleSubmit">
     <textarea 
+      ref="textarea"
       :value="body"
       @keyup="handleTextInput"
       placeholder="New Journal Entry for danielkelly_io">
