@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import UseEmojis from "@/composables/UseEmojis";
+import { userInjectionKey } from "@/injectionKeys";
 const { emojis } = UseEmojis();
 
 defineProps(["modelValue"]);

@@ -2,7 +2,12 @@
 import type Entry from '../types/Entry'
 import DateDisplay from "./DateDisplay.vue";
 import UseEmojis from "@/composables/UseEmojis";
+import { userInjectionKey } from '@/injectionKeys';
+import { inject } from 'vue';
 const { findEmoji } = UseEmojis();
+
+// In child component
+const user = inject(userInjectionKey)
 
 /*/ Runtime declaration of Props
 const props = defineProps({
@@ -40,7 +45,7 @@ const props = defineProps({
     <div class="entry-footer">
       <DateDisplay :date="entry.createdAt" class="mr-2" />
       |
-      <span class="ml-2">User ID: {{ entry.userId}}</span>
+      <span class="ml-2">{{ user?.username || "anonymous"}}</span>
     </div>
   </div>
 </template>

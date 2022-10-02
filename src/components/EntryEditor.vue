@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+  import { inject } from 'vue'
 import EmojiField from "@/components/EmojiField.vue"
 import ArrowCircleRight from "@/assets/icons/arrow-circle-right.svg"
 import type Emoji from '@/types/Emoji'
 import type Entry from "@/types/Entry";
 import { ref, computed, onMounted } from 'vue'
+import { userInjectionKey } from '@/injectionKeys';
 
 // Data
 const body = ref('')
@@ -17,6 +19,10 @@ const emoji = ref<Emoji | null>(null)
 const charCount = computed(() => body.value.length)
 // You can explicitly type charCount like so:
 // const charCount = computed<number>(() => body.value.length)
+
+  // In child component
+const user = inject(userInjectionKey)
+
 
 // Template refs
 
@@ -66,7 +72,7 @@ const handleSubmit = () => {
       ref="textarea"
       :value="body"
       @keyup="handleTextInput"
-      placeholder="New Journal Entry for danielkelly_io">
+      :placeholder="`New Journal Entry for ${user?.username || 'anonymous'}`">
     </textarea>
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">
