@@ -16,7 +16,6 @@ const user: User = reactive({
 
 const handleCreateEntry = (entry: Entry) => {
   console.log(entry);
-  
 }
 
 </script>
