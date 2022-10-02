@@ -1,6 +1,6 @@
-# Boilerplate Code for Typescript with Vue.js 3 Course
+# Journal Entries example - from Typescript with Vue.js 3 Course
 
-This is the boilerplate code for the TypeScript with Vue.js 3 Course.
+This project is an example from the [TypeScript with Vue.js 3 Course](https://github.com/vueschool/ts-vue-boilerplate).
 
 ## How to Install
 ```sh
@@ -27,4 +27,22 @@ npm run build
 
 ```sh
 npm run lint
+```
+
+## Installed depdencies
+for demonstrate global declaration `$http` variable:
+```
+npm install axios
+```
+
+## Special config:
+Opt-in `reactivityTransform` feature in `vite.config.ts`:
+```js
+export default defineConfig({
+  plugins: [vue({
+    reactivityTransform: true 
+  }), ...],
+  ...
+});
+
 ```
