@@ -64,7 +64,7 @@ const handleSubmit = () => {
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">
       <span>{{ charCount }} / {{ maxChars }}</span>
-      <button>Remember <ArrowCircleRight width="20" /></button>
+      <button :disabled="charCount == 0">Remember <ArrowCircleRight width="20" /></button>
     </div>
   </form>
 </template>
